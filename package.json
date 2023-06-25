@@ -4,6 +4,12 @@
   "private": true,
   "author": "Jose Bolivar I",
   "description": "A blog made with next.js, chakra UI and integrating markdown",
+  "keywords": [
+    "tech",
+    "blog",
+    "next.js",
+    "markdown"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -15,6 +21,7 @@
     "@chakra-ui/react": "^2.7.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@fontsource/raleway": "^5.0.3",
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.6",
     "framer-motion": "^10.12.16",
@@ -24,6 +31,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "rehype-code-titles": "^1.2.0",
-    "rehype-prism-plus": "^1.5.1"
+    "rehype-prism-plus": "^1.5.1",
+    "remark-gfm": "^3.0.1"
   }
 }

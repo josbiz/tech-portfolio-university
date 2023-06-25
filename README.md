@@ -20,7 +20,7 @@ To use this portfolio, simply navigate through the different sections and explor
 
 To set up the portfolio locally, follow these steps:
 
-1. Clone the repository: git clone https://github.com/your-username/your-portfolio.git
+1. Clone the repository: git clone https://github.com/bon-TI/tech-blog-posts.git
 
 2. Navigate to the project directory: cd your-portfolio
 
@@ -34,7 +34,6 @@ To set up the portfolio locally, follow these steps:
 
 - [Next.js](https://nextjs.org/)
 - [React](https://reactjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
 - [Vercel](https://vercel.com/)
 
 ### License

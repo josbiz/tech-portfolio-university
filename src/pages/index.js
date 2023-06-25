@@ -1,6 +1,11 @@
+import Hero from '@/components/Hero'
 
 function Home() {
-  return <div>Hola Pagina Inicial</div>
+  return (
+    <>
+      <Hero />
+    </>
+  )
 }
 
 export default Home
