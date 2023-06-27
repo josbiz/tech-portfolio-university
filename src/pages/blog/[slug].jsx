@@ -53,7 +53,7 @@ export async function getStaticPaths() {
     paths,
     fallback: false,
   }
-}
+} 
 
 export async function getStaticProps({ params }) {
   const { source, frontmatter } = await getFilesBySlug(params.slug)

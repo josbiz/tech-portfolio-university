@@ -11,9 +11,11 @@ const Navbar = () => {
         mx="auto"
         px={4}
       >
-        <Text fontWeight="bold" fontSize="xl">
-          Jose Bolivar I
-        </Text>
+        <Link href="/" passHref>
+          <Text fontWeight="bold" fontSize="xl">
+            Bon-TI Notes
+          </Text>
+        </Link>
         <Flex>
           <Link href="/" passHref mx={2}>
             <Text fontWeight="bold">Home</Text>
@@ -22,7 +24,7 @@ const Navbar = () => {
             <Text fontWeight="bold">Blog</Text>
           </Link>
         </Flex>
-      </Flex>
+      </Flex> 
     </Box>
   )
 }
