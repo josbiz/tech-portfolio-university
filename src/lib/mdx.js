@@ -10,11 +10,27 @@ import remarkGfm from 'remark-gfm'
 const root = process.cwd()
 const postsPath = 'posts'
 
-export const getFiles = () => fs.readdirSync(path.join(root, postsPath))
+export const getFiles = (typeDir) => {
+  const fullPostsPath = path.join(root, postsPath, typeDir);
 
-export const getFilesBySlug = async (slug) => {
+  try {
+    const files = fs.readdirSync(fullPostsPath)
+      .filter((file) => {
+        const filePath = path.join(fullPostsPath, file);
+        const stats = fs.statSync(filePath);
+        return stats.isFile();
+      });
+
+    return files;
+  } catch (error) {
+    console.error('Error al leer los archivos:', error);
+    return [];
+  }
+};
+
+export const getFilesBySlug = async (type, slug) => {
   const mdxSource = fs.readFileSync(
-    path.join(root, postsPath, `${slug}.md`),
+    path.join(root, postsPath, type, `${slug}.md`),
     'utf-8'
   )
 
@@ -29,29 +45,73 @@ export const getFilesBySlug = async (slug) => {
   return {
     source,
     frontmatter: {
+      type,
       slug,
       ...data,
     },
   }
 }
 
-export const getAllFilesMetadata = () => {
-  const files = getFiles()
+
+export const getAllFilesMetadata = (typeDir) => {
+  const files = getFiles(typeDir)
 
   return files.reduce((allPosts, postSlug) => {
-    const mdxSource = fs.readFileSync(
-      path.join(root, postsPath, postSlug),
-      'utf-8'
-    )
+    const filePath = path.join(root, postsPath, typeDir, postSlug)
 
-    const { data } = matter(mdxSource)
+    if (fs.lstatSync(filePath).isFile()) {
+      const mdxSource = fs.readFileSync(filePath, 'utf-8')
+      const { data } = matter(mdxSource)
 
-    return [
-      {
-        ...data,
-        slug: postSlug.replace('.md', ''),
-      },
-      ...allPosts,
-    ]
+      return [
+        ...allPosts,
+        {
+          ...data,
+          slug: postSlug.replace('.md', ''),
+        },
+      ];
+      
+    }
+
+    return allPosts
   }, [])
+}
+
+
+export function getAllSubdirectories() {
+  try {
+    const subdirectories = fs.readdirSync(path.join(root, postsPath), { withFileTypes: true })
+      .filter(dirent => dirent.isDirectory())
+      .map(dirent => dirent.name);
+
+    return subdirectories;
+  } catch (error) {
+    console.error('Error al leer los subdirectorios:', error);
+    return [];
+  }
+}
+
+export function getAllMDFiles() {
+  const subdirectories = getAllSubdirectories()
+  const paths = []
+
+  for (const subdir of subdirectories) {
+    const dirPath = path.join(root, postsPath, subdir)
+    const files = fs.readdirSync(dirPath)
+
+    for (const file of files) {
+      if (file.endsWith('.md')) {
+        const slug = file.replace(/\.md$/, '')
+
+        paths.push({
+          params: {
+            type: subdir,
+            slug: slug,
+          },
+        })
+      }
+    }
+  }
+
+  return paths
 }

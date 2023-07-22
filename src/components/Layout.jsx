@@ -9,8 +9,8 @@ export default function Layout({ children }) {
     <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <meta http-equiv="X-UA-Compatible" content="IE=7" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=7" />
+        <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <meta name="author" content="José Bolívar" />
         <meta viewport="width=device-width, initial-scale=1.0" />
       </Head>

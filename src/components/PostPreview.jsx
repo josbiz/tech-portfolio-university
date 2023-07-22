@@ -1,9 +1,9 @@
 import { Box, Heading, Text } from '@chakra-ui/react'
 import Link from 'next/link'
 
-function PostPreview({ post }) {
+function PostPreview({ post, type }) {
   return (
-    <Link href={`/blog/${post.slug}`}>
+    <Link href={`/blog/${type}/${post.slug}`}>
       <Box
         p={4}
         borderWidth="1px"
@@ -19,13 +19,16 @@ function PostPreview({ post }) {
         flexDirection="column"
         justifyContent="center"
         alignItems="flex-start"
-        textAlign="center"
+        textAlign="left"
       >
-        <Heading as="h2" fontSize={['xl', '2xl', '2xl', '2xl']} mb={2}>
+        <Heading as="h2" fontSize={['xl', '2xl', '2xl', '2xl']} m={1}>
           {post.title}
         </Heading>
-        <Text fontSize={['md', 'lg', 'lg', 'lg']} color="gray.600">
+        <Text fontSize={['md', 'lg', 'lg', 'lg']} color="gray.600" m={1}>
           {post.subtitle}
+        </Text>
+        <Text fontSize={['sm', 'md', 'md', 'md']} color="gray.400" m={1}>
+          {post.date}
         </Text>
       </Box>
     </Link>

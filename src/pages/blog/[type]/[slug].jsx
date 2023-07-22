@@ -2,23 +2,29 @@ import { Box, Heading, Text } from '@chakra-ui/react'
 import { MDXRemote } from 'next-mdx-remote'
 import Head from 'next/head'
 
-import { getFilesBySlug, getFiles } from '@/lib/mdx'
+import { getFilesBySlug, getAllMDFiles } from '@/lib/mdx'
+import PagesNavigation from '@/components/PagesNavigation'
 import MDXComponents from '@/components/MDXComponents'
+
+import Container from '@/components/Container'
 
 export default function PostPage({ source, frontmatter }) {
   const title = frontmatter.title
   const subtitle = frontmatter.subtitle
   const date = frontmatter.date
+  const keywords = frontmatter.keywords
 
   return (
     <>
       <Head>
-        <title>{`${title} | Blog`}</title>
+        <title>{`${title} | Bon-TI Notes`}</title>
+        <meta name="description" content={subtitle} />
+        <meta name="keywords" content={keywords} />
       </Head>
-      <Box
-        mx={['20px', '50px', '100px', '200px']}
-        my={['20px', '30px', '40px', '50px']}
-      >
+      <Container variant="slug">
+        <Box my={6}>
+        <PagesNavigation type={frontmatter.type} />
+        </Box>
         <Heading as="h1" fontSize={['xl', '2xl', '3xl', '4xl']} mb={2}>
           {title}
         </Heading>
@@ -36,35 +42,32 @@ export default function PostPage({ source, frontmatter }) {
         <Box>
           <MDXRemote {...source} components={MDXComponents} />
         </Box>
-      </Box>
+        </Container>
     </>
   )
 }
 
 export async function getStaticPaths() {
-  const posts = await getFiles('posts')
-  const paths = posts.map((post) => ({
-    params: {
-      slug: post.replace(/\.md/, ''),
-    },
-  }))
+  const paths = await getAllMDFiles();
 
   return {
     paths,
     fallback: false,
   }
-} 
+}
 
 export async function getStaticProps({ params }) {
-  const { source, frontmatter } = await getFilesBySlug(params.slug)
-  
+  const { type, slug } = params;
+  const { source, frontmatter } = await getFilesBySlug(type, slug);
+
   return {
     props: {
       source,
       frontmatter: {
-        slug: params.slug,
+        type,
+        slug,
         ...frontmatter,
       },
     },
-  }
+  };
 }
