@@ -1,11 +1,11 @@
-import { Box, Heading, Text } from '@chakra-ui/react'
+import { Box, Heading } from '@chakra-ui/react'
 import Link from 'next/link'
 import React from 'react'
 
 function TypePreview({ sub, filename }) {
   return (
     <div>
-      <Link href={`/blog/${sub}`}>
+      <Link href={`/notas/${sub}`}>
         <Box
           p={4}
           my={4}

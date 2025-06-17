@@ -16,7 +16,9 @@ function Home() {
       </Head>
       <Hero />
       <CareerInfo />
-      <AboutMe />
+      
+      <AboutMe /> 
+     
     </>
   )
 }

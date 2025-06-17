@@ -1,5 +1,4 @@
-import { Box, Heading, Flex, Image, UnorderedList, ListItem } from '@chakra-ui/react'
-
+import { Box, Heading, Flex, List, Image } from '@chakra-ui/react'
 
 function AboutMe() {
   return (
@@ -32,26 +31,26 @@ function AboutMe() {
           px={['20px', '40px', '80px', '100px']}
           textAlign="left"
         >
-          <UnorderedList p={4} m={4}>
-            <ListItem py="5px">
+          <List.Root p={4} m={4}>
+            <List.Item py="5px">
               Disfruto leyendo libros de ciencia ficción y también me gusta dibujar, especialmente en estilo de cómic.
-            </ListItem>
-            <ListItem py="5px">
+            </List.Item>
+            <List.Item py="5px">
               Me interesa mucho el campo de la programación porque creo que se pueden crear cosas increíbles al combinar creatividad y tecnología. Siempre disfruto estudiando las últimas tecnologías.
-            </ListItem>
-            <ListItem py="5px">
+            </List.Item>
+            <List.Item py="5px">
               Me encanta pasar tiempo con mis amigos y explorar nuevos lugares.
-            </ListItem>
-            <ListItem py="5px">
+            </List.Item>
+            <List.Item py="5px">
               Disfruto jugando videojuegos como una forma de relajarme y descansar de las tareas diarias y el trabajo.
-            </ListItem>
-            <ListItem py="5px">
+            </List.Item>
+            <List.Item py="5px">
               Soy amante de la comida y siempre disfruto probando nuevos platos y experimentando diferentes sabores.
-            </ListItem>
-            <ListItem py="5px">
+            </List.Item>
+            <List.Item py="5px">
               Aunque no lo hago muy seguido, me gusta escuchar música.
-            </ListItem>
-          </UnorderedList>
+            </List.Item>
+          </List.Root>
         </Box>
       </Flex>
     </Box>

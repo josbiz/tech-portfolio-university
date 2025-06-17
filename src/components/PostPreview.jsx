@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 function PostPreview({ post, type }) {
   return (
-    <Link href={`/blog/${type}/${post.slug}`}>
+    <Link href={`/notas/${type}/${post.slug}`}>
       <Box
         p={4}
         borderWidth="1px"

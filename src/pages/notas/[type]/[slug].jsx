@@ -13,24 +13,25 @@ export default function PostPage({ source, frontmatter }) {
   const subtitle = frontmatter.subtitle
   const date = frontmatter.date
   const keywords = frontmatter.keywords
+  const type = frontmatter.type
 
   return (
     <>
       <Head>
-        <title>{`${title} | Bon-TI Notes`}</title>
+        <title>{`${title} | Josbiz Notes`}</title>
         <meta name="description" content={subtitle} />
         <meta name="keywords" content={keywords} />
       </Head>
       <Container variant="slug">
         <Box my={6}>
-        <PagesNavigation type={frontmatter.type} />
+          <PagesNavigation type={type} />
         </Box>
-        <Heading as="h1" fontSize={['xl', '2xl', '3xl', '4xl']} mb={2}>
+        <Heading as="h1" fontSize={["xl", "2xl", "3xl", "4xl"]} mb={2}>
           {title}
         </Heading>
         <Heading
           as="h2"
-          fontSize={['md', 'lg', 'xl', '2xl']}
+          fontSize={["md", "lg", "xl", "2xl"]}
           fontWeight="normal"
           mb={2}
         >
@@ -42,9 +43,9 @@ export default function PostPage({ source, frontmatter }) {
         <Box>
           <MDXRemote {...source} components={MDXComponents} />
         </Box>
-        </Container>
+      </Container>
     </>
-  )
+  );
 }
 
 export async function getStaticPaths() {

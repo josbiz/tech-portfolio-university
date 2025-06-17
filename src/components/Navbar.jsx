@@ -1,9 +1,8 @@
-import { Box, Flex, Text } from '@chakra-ui/react'
-import { Link } from '@chakra-ui/next-js'
+import { Box, Flex, Text, Link } from '@chakra-ui/react'
 
 const Navbar = () => {
   return (
-    <Box as="nav" bg="blackAlpha.50" color="gray.800" py={4}>
+    <Box as="nav" bg="blackAlpha.50" color="gray.800" py={4} px={3}>
       <Flex
         justify="space-between"
         align="center"
@@ -11,17 +10,17 @@ const Navbar = () => {
         mx="auto"
         px={4}
       >
-        <Link href="/" passHref>
+        <Link href="/">
           <Text fontWeight="bold" fontSize="xl">
-            Bon-TI Notes
+            Josbiz Notes
           </Text>
         </Link>
         <Flex>
-          <Link href="/" passHref mx={2}>
-            <Text fontWeight="bold">Home</Text>
+          <Link href="/" mx={2}>
+            <Text fontWeight="bold">Inicio</Text>
           </Link>
-          <Link href="/blog" passHref mx={2}>
-            <Text fontWeight="bold">Blog</Text>
+          <Link href="/notas" mx={2}>
+            <Text fontWeight="bold">Notas</Text>
           </Link>
         </Flex>
       </Flex> 
