@@ -1,4 +1,4 @@
-import { Heading, Text, Link, List, Code, Table, Thead, Tbody, Tr, Th, Td, Image } from "@chakra-ui/react"
+import { Heading, Text, Link, List, Code, Table, Image } from "@chakra-ui/react"
 
 const MDXComponents = {
   h1: (props) => <Heading as="h1" fontSize="2xl" mt={6} mb={4} {...props} />,
@@ -13,15 +13,15 @@ const MDXComponents = {
   code: (props) => <Code {...props} p={4} backgroundColor='blackAlpha.100'/>,
   img: (props) => <Image my={4} alt={props.alt || ""} {...props} />,
   table: (props) => (
-    <Table my={4} size="md" colorScheme="gray">
+    <Table.Root my={4} size="md" colorScheme="gray">
       {props.children}
-    </Table>
+    </Table.Root>
   ),
-  thead: (props) => <Thead {...props} />,
-  tbody: (props) => <Tbody {...props} />,
-  tr: (props) => <Tr {...props} />,
-  th: (props) => <Th {...props} />,
-  td: (props) => <Td {...props} />,
+  thead: (props) => <Table.Header {...props} />,
+  tbody: (props) => <Table.Body {...props} />,
+  tr: (props) => <Table.Row {...props} />,
+  th: (props) => <Table.Row {...props} />,
+  td: (props) => <Table.Cell {...props} />,
 };
 
 export default MDXComponents;
